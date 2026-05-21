@@ -1,0 +1,14 @@
+MainLayout
+- wrapper around pages
+- is the picture frame around the pictures
+- i.e. mainlayout is the frame, the pages are the pictures
+- every page will be wrapped in the mainlayout, so same look across the entire app.
+
+app.razor
+- Handles routing and loading layouts
+- app.razor will find the correct page to load based on the URL, and then it will load the mainlayout, and then it will load the page inside the mainlayout.
+
+program.cs
+- Application startup/bootstrap file
+- chain is index.html -> program.cs -> app.razor -> mainlayout -> page
+- can set up services, dependency injection, etc.
