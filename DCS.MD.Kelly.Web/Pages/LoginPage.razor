@@ -1,0 +1,58 @@
+﻿@page "/login"
+@layout EmptyLayout
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-emoji">💛</div>
+        <h1 class="login-title">Our Little World</h1>
+        <p class="login-subtitle">just for us</p>
+
+        <div class="login-form">
+            <input type="password"
+                   class="login-input @(shake ? "shake" : "")"
+                   placeholder="enter the secret word..."
+                   @bind="password"
+                   @bind:event="oninput"
+                   @onkeydown="HandleKey" />
+
+            @if (error)
+            {
+                <p class="login-error">that's not quite right 🌿 try again</p>
+            }
+
+            <button class="btn btn-primary login-btn" @onclick="TryLogin">
+                come on in ✨
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string password = "";
+    private bool error = false;
+    private bool shake = false;
+
+    private async Task TryLogin()
+    {
+        var success = await Auth.LoginAsync(password);
+        if (success)
+        {
+            Nav.NavigateTo("/");
+        }
+        else
+        {
+            error = true;
+            shake = true;
+            await Task.Delay(500);
+            shake = false;
+            password = "";
+        }
+    }
+
+    private async Task HandleKey(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") await TryLogin();
+    }
+}

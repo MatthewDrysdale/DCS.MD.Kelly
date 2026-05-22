@@ -1,16 +1,44 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@inject AuthService Auth
+@inject NavigationManager Nav
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+@if (!Auth.IsAuthenticated)
+{
+    // Redirect handled in OnInitializedAsync
+}
+else
+{
+    <div class="app-layout">
+        <header class="topbar">
+            <div class="topbar-inner">
+                <div class="topbar-brand">
+                    <span class="app-title">💛 Our Little World</span>
+                </div>
+                <button class="nav-toggle" @onclick="ToggleNav">
+                    @(navOpen ? "✕" : "☰")
+                </button>
+                <nav class="topbar-nav @(navOpen ? "open" : "")">
+                    <NavMenu OnLinkClicked="CloseNav" />
+                </nav>
+            </div>
+        </header>
+        <main class="main-content">
             @Body
-        </article>
-    </main>
-</div>
+        </main>
+    </div>
+}
+
+@code {
+    private bool navOpen = false;
+    private void ToggleNav() => navOpen = !navOpen;
+    private void CloseNav() => navOpen = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Auth.InitialiseAsync();
+        if (!Auth.IsAuthenticated)
+        {
+            Nav.NavigateTo("/login");
+        }
+    }
+}

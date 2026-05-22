@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "date": "2015-06-23",
+    "title": "The Day We Met",
+    "description": "A short description of the memory, as long or short as you like.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 2,
+    "date": "2015-07-12",
+    "title": "What Are We Day",
+    "description": "The day I embarrassed myself with that infamous question...",
+    "category": "milestone"
+  },
+
+  {
+    "id": 3,
+    "date": "2018-02-28",
+    "title": "Our first big snow together",
+    "description": "Face scuptulers in the garden table, Sammy the snowman, popadoms in the night, walkies with the doggies, and Frozen and hot chocolate with Mumsy.",
+    "category": "memories"
+  },
+
+  {
+    "id": 4,
+    "date": "1998-06-15",
+    "title": "Kelly Birthday!",
+    "description": "The day that this grim place called earth was graced with the magnificance of your being, thus making it liveable, my love.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 5,
+    "date": "1998-10-11",
+    "title": "Matty Birthday",
+    "description": "Wow Matty's birthday! Give him a kiss momma.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 6,
+    "date": "2024-11-11",
+    "title": "The keys to our first place together!",
+    "description": "Not the most amazing place, but we make the most of it, as long as we are together.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 7,
+    "date": "2024-11-30",
+    "title": "Jiji gotcha day!",
+    "description": "The first day of the new year, a fresh start for us to create more memories together.",
+    "category": "memories"
+  }
+]

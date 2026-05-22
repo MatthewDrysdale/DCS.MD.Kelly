@@ -15,7 +15,13 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Components\" />
-    <Folder Include="Services\" />
+    <Folder Include="wwwroot\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DCS.MD.Logging">
+      <HintPath>..\..\DCS.MD.Logging\bin\Release\net8.0\DCS.MD.Logging.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
