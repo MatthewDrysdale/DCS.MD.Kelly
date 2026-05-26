@@ -1,0 +1,49 @@
+﻿@page "/timeline"
+@inject DataService Data
+
+<div class="timeline-page">
+
+    <div class="page-header">
+        <h1>Our Timeline 📅</h1>
+        <p>every chapter of our story</p>
+    </div>
+
+    @if (entries == null)
+    {
+        <div class="timeline-loading">loading your story...</div>
+    }
+    else
+    {
+        <div class="timeline">
+            @for (int i = 0; i < entries.Count; i++)
+            {
+                var entry = entries[i];
+                var isLeft = i % 2 == 0;
+
+                <div class="timeline-item @(isLeft ? "left" : "right")">
+                    <div class="timeline-card card">
+                        <div class="timeline-card-header">
+                            <span class="timeline-emoji">@entry.Emoji</span>
+                            <span class="timeline-category @entry.Category">@entry.Category</span>
+                        </div>
+                        <div class="timeline-date">@entry.ParsedDate.ToString("dd MMMM yyyy")</div>
+                        <h3 class="timeline-title">@entry.Title</h3>
+                        <p class="timeline-description">@entry.Description</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@code {
+    private List<TimelineEntry>? entries;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var all = await Data.GetTimelineAsync();
+        entries = all.OrderBy(e => e.ParsedDate).ToList();
+    }
+}

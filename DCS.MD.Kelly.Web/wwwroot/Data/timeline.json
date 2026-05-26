@@ -3,7 +3,7 @@
     "id": 1,
     "date": "2015-06-23",
     "title": "The Day We Met",
-    "description": "A short description of the memory, as long or short as you like.",
+    "description": "A little bit awkward and some questions were raised about the mental stability of Hollie.",
     "category": "milestone"
   },
 
@@ -51,7 +51,136 @@
     "id": 7,
     "date": "2024-11-30",
     "title": "Jiji gotcha day!",
-    "description": "The first day of the new year, a fresh start for us to create more memories together.",
+    "description": "Sure he wasn't our first choice but he's our autistic bin cat and we woudn't change him for the world.'",
+    "category": "memories"
+  },
+
+  {
+    "id": 8,
+    "date": "2025-08-01",
+    "title": "Marnie gotcha day!",
+    "description": "Love at first sight. Momma's soul cat forever and always.'",
+    "category": "memories"
+  },
+
+  {
+    "id": 9,
+    "date": "2024-07-10",
+    "title": "Witch Museum in Edinburgh!",
+    "description": "Royal Mile",
+    "category": "memories"
+  },
+
+  {
+    "id": 10,
+    "date": "2024-05-01",
+    "title": "Olivia Rodrigo Again!!",
+    "description": "3 Arena",
+    "category": "memories"
+  },
+
+  {
+    "id": 11,
+    "date": "2024-06-01",
+    "title": "Bloom!",
+    "description": "Phoenix Park",
+    "category": "memories"
+  },
+
+  {
+    "id": 12,
+    "date": "2024-06-15",
+    "title": "Tara Hill Adventure",
+    "description": "Gorey",
+    "category": "memories"
+  },
+
+  {
+    "id": 13,
+    "date": "2024-06-30",
+    "title": "Eras Tour!!!",
+    "description": "feat. Paraslay.",
+    "category": "memories"
+  },
+
+  {
+    "id": 14,
+    "date": "2024-10-08",
+    "title": "Verona",
+    "description": "Breakfast croissant in front of the arena.",
+    "category": "memories"
+  },
+
+  {
+    "id": 15,
+    "date": "2024-10-10",
+    "title": "Venice",
+    "description": "Check in to our fancy la de da hotel!",
+    "category": "memories"
+  },
+
+  {
+    "id": 16,
+    "date": "2024-10-15",
+    "title": "Florence",
+    "description": "Petted a pretty cat in Boboli Gardens.",
     "category": "memories"
   }
+
+  {
+    "id": 17,
+    "date": "2024-10-18",
+    "title": "Pisa",
+    "description": "Cursed black sandwich in Pisa.",
+    "category": "memories"
+  },
+
+  {
+    "id": 18,
+    "date": "2023-07-14",
+    "title": "London",
+    "description": "Visited THE restaurant in London.",
+    "category": "memories"
+  },
+
+  {
+    "id": 19,
+    "date": "2021-09-06",
+    "title": "Caught a frog",
+    "description": "She was cute.",
+    "category": "memories"
+  },
+
+  {
+    "id": 20,
+    "date": "2017-03-04",
+    "title": "Phoebe Gotcha Day!",
+    "description": "Arrived with no eyebrows installed unfortunately.",
+    "category": "memories"
+  },
+
+  {
+    "id": 21,
+    "date": "2017-03-04",
+    "title": "Phoebe Gotcha Day!",
+    "description": "Arrived with no eyebrows installed unfortunately.",
+    "category": "memories"
+  },
+
+  {
+    "id": 22,
+    "date": "2019-03-16",
+    "title": "Henry Gotcha Day!",
+    "description": "Eat your heart out Snoop.",
+    "category": "memories"
+  },
+
+  {
+    "id": 23,
+    "date": "2010-12-01",
+    "title": "Fifi Gotcha Day!",
+    "description": "Early records don't cite the day exactly but we estimate Fifi Arrival was some time in December.'",
+    "category": "memories"
+  }
+
 ]

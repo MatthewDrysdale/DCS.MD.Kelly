@@ -1,0 +1,163 @@
+﻿@page "/stats"
+@implements IDisposable
+
+<h3>Stats</h3>
+
+<div class="stats-grid">
+
+    <!-- Card:Since first met -->
+    <div class="stat-card" featured>
+        <div class="stat-icon">🌟</div>
+        <div class="stat-label">Since we first met</div>
+        <div class="stat-date">23rd June 2015</div>
+        <div class="stat-main">@metDays <span class="stat-unit">days</span></div>
+        <div class="stat-sub">
+            @metYears yrs, @metMonths mos, @metRemDays days
+        </div>
+        <div class="stat-ticker">
+            @metTotalHours hrs &nbsp;·&nbsp; @metMinutes mins &nbsp;·&nbsp; @metSeconds secs
+        </div>
+    </div>
+
+    <!-- Card: What are we? -->
+    <div class="stat-card">
+        <div class="stat-icon">💛</div>
+        <div class="stat-label">our "what are we" day 💛</div>
+        <div class="stat-date">12th July 2015</div>
+        <div class="stat-main">@togetherDays <span class="stat-unit">days</span></div>
+        <div class="stat-sub">
+            @togetherYears yrs, @togetherMonths mos, @togetherRemDays days
+        </div>
+        <div class="stat-ticker">
+            @togetherTotalHours hrs &nbsp;·&nbsp; @togetherMinutes mins &nbsp;·&nbsp; @togetherSeconds secs
+        </div>
+    </div>
+
+    <!-- Card: Next Wedding Ann -->
+    <div class="stat-card">
+        <div class="stat-icon">💍</div>
+        <div class="stat-label">next wedding anniversary in</div>
+        <div class="stat-main">@daysToWeddingAnniversary <span class="stat-unit">days</span></div>
+        <div class="stat-sub">23rd June — our wedding day 💍</div>
+    </div>
+
+    <!-- Card: Next What are we Ann -->
+    <div class="stat-card">
+        <div class="stat-icon">🎉</div>
+        <div class="stat-label">next "what are we" day in</div>
+        <div class="stat-main">@daysToAnniversary <span class="stat-unit">days</span></div>
+        <div class="stat-sub">12th July — our day 💛</div>
+    </div>
+
+    <!-- Card: Days of the week -->
+    <div class="stat-card">
+        <div class="stat-icon">📆</div>
+        <div class="stat-label">we've been together for</div>
+        <div class="stat-main">@togetherWeekdays <span class="stat-unit">@currentDayPlural</span></div>
+        <div class="stat-sub">met on a @metDayOfWeek · became "a couple" on a @togetherDayOfWeek</div>
+    </div>
+
+</div>
+
+@code {
+    #region Variables
+    private Timer? timer;
+    // Dates 
+    private readonly DateTime metDate = new DateTime(2015, 6, 23);
+    private readonly DateTime togetherDate = new DateTime(2015, 7, 12);
+    private readonly DateTime weddingDate = new DateTime(2025, 6, 23);
+
+    // Met stats
+    private int metSeconds, metMinutes, metHours, metTotalHours;
+    private int metDays, metRemDays, metMonths, metYears;
+    private string metDayOfWeek = string.Empty;
+
+    // Together stats
+    private int togetherSeconds, togetherMinutes, togetherHours, togetherTotalHours;
+    private int togetherDays, togetherRemDays, togetherWeekdays, togetherMonths, togetherYears;
+    private string togetherDayOfWeek = string.Empty;
+
+    // Anniversary
+    private int daysToAnniversary;
+    private int daysToWeddingAnniversary;
+
+    // Current
+    private string currentDay = string.Empty;
+    private string currentDayPlural = string.Empty;
+    private string currentDate = string.Empty;
+    private string currentTime = string.Empty;
+    private int lastMinute = -1;
+    #endregion
+
+    protected override void OnInitialized()
+    {
+        Recalculate();
+        timer = new Timer(_ =>
+        {
+            Recalculate();
+            InvokeAsync(StateHasChanged);
+        }, null, 0, 1000);
+    }
+
+    private void Recalculate()
+    {
+        var now = DateTime.Now;
+
+        // Met stats
+        var metSpan = now - metDate;
+        metDays = (int)metSpan.TotalDays;
+        GetYearsMonthsDays(metDate, now, out metYears, out metMonths, out metRemDays);
+        metHours = (int)metSpan.TotalHours % 24;
+        metTotalHours = (int)metSpan.TotalHours;
+        metMinutes = (int)metSpan.TotalMinutes % 60;
+        metSeconds = (int)metSpan.TotalSeconds % 60;
+
+        // Together stats
+        var togetherSpan = now - togetherDate;
+        togetherDays = (int)togetherSpan.TotalDays;
+        togetherHours = (int)togetherSpan.TotalHours % 24;
+        togetherTotalHours = (int)togetherSpan.TotalHours;
+        togetherMinutes = (int)togetherSpan.TotalMinutes % 60;
+        togetherSeconds = (int)togetherSpan.TotalSeconds % 60;
+        GetYearsMonthsDays(togetherDate, now, out togetherYears, out togetherMonths, out togetherRemDays);
+
+        // Next anniversary
+        var nextAnniversary = new DateTime(now.Year, togetherDate.Month, togetherDate.Day);
+        if (nextAnniversary <= now)
+            nextAnniversary = nextAnniversary.AddYears(1);
+        daysToAnniversary = (int)(nextAnniversary - now).TotalDays;
+
+        // Next wedding anniversary
+        var nextWedding = new DateTime(now.Year, metDate.Month, metDate.Day);
+        if (nextWedding <= now)
+            nextWedding = nextWedding.AddYears(1);
+        daysToWeddingAnniversary = (int)(nextWedding - now).TotalDays;
+
+        // Day of week stats
+        metDayOfWeek = metDate.DayOfWeek.ToString();
+        togetherDayOfWeek = togetherDate.DayOfWeek.ToString();
+        currentDay = now.DayOfWeek.ToString();
+        currentDayPlural = now.DayOfWeek.ToString() + "s";
+        togetherWeekdays = (int)(togetherSpan.TotalDays / 7);
+    }
+
+    private void GetYearsMonthsDays(DateTime from, DateTime to, out int years, out int months, out int days)
+    {
+        years = to.Year - from.Year;
+        months = to.Month - from.Month;
+        days = to.Day - from.Day;
+
+        if (days < 0)
+        {
+            months--;
+            days += DateTime.DaysInMonth(to.Year, to.Month == 1 ? 12 : to.Month - 1);
+        }
+        if (months < 0)
+        {
+            years--;
+            months += 12;
+        }
+    }
+
+    public void Dispose() => timer?.Dispose();
+}

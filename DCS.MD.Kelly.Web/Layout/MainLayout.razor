@@ -2,43 +2,24 @@
 @inject AuthService Auth
 @inject NavigationManager Nav
 
-@if (!Auth.IsAuthenticated)
-{
-    // Redirect handled in OnInitializedAsync
-}
-else
-{
+<AuthorizedView>
     <div class="app-layout">
         <header class="topbar">
             <div class="topbar-inner">
                 <div class="topbar-brand">
                     <span class="app-title">💛 Our Little World</span>
                 </div>
-                <button class="nav-toggle" @onclick="ToggleNav">
-                    @(navOpen ? "✕" : "☰")
-                </button>
-                <nav class="topbar-nav @(navOpen ? "open" : "")">
-                    <NavMenu OnLinkClicked="CloseNav" />
-                </nav>
+                <a href="/" class="home-btn">🏠</a>
             </div>
         </header>
         <main class="main-content">
             @Body
         </main>
     </div>
-}
+</AuthorizedView>
 
 @code {
     private bool navOpen = false;
     private void ToggleNav() => navOpen = !navOpen;
     private void CloseNav() => navOpen = false;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Auth.InitialiseAsync();
-        if (!Auth.IsAuthenticated)
-        {
-            Nav.NavigateTo("/login");
-        }
-    }
 }

@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject DataService Data
 @inject AuthService Auth
 @inject NavigationManager Nav
 @implements IDisposable
@@ -12,97 +13,108 @@
         <p class="rotating-message">@rotatingMessage</p>
     </div>
 
-    <div class="stats-grid">
+    @if (onThisDay.Any())
+    {
+        <div class="section-title">📅 on this day</div>
 
-        <!-- Card:Since first met -->
-        <div class="stat-card" featured>
-            <div class="stat-icon">🌟</div>
-            <div class="stat-label">Since we first met</div>
-            <div class="stat-date">23rd June 2015</div>
-            <div class="stat-main">@metDays <span class="stat-unit">days</span></div>
-            <div class="stat-sub">
-                @metYears yrs, @metMonths mos, @metRemDays days
-            </div>
-            <div class="stat-ticker">
-                @metTotalHours hrs &nbsp;·&nbsp; @metMinutes mins &nbsp;·&nbsp; @metSeconds secs
-            </div>
+        <div class="on-this-day-grid">
+            @foreach (var entry in onThisDay)
+            {
+                <div class="on-this-day-card card">
+                    <div class="otd-top">
+                        <span class="otd-emoji">@entry.Emoji</span>
+                        <span class="timeline-category @entry.Category">@entry.Category</span>
+                    </div>
+                    <div class="otd-year">@entry.ParsedDate.Year — @yearsAgo(entry) ago</div>
+                    <div class="otd-title">@entry.Title</div>
+                    <p class="otd-description">@entry.Description</p>
+                </div>
+            }
         </div>
+    }
 
-        <!-- Card: What are we? -->
-        <div class="stat-card">
-            <div class="stat-icon">💛</div>
-            <div class="stat-label">our "what are we" day 💛</div>
-            <div class="stat-date">12th July 2015</div>
-            <div class="stat-main">@togetherDays <span class="stat-unit">days</span></div>
-            <div class="stat-sub">
-                @togetherYears yrs, @togetherMonths mos, @togetherRemDays days
-            </div>
-            <div class="stat-ticker">
-                @togetherTotalHours hrs &nbsp;·&nbsp; @togetherMinutes mins &nbsp;·&nbsp; @togetherSeconds secs
-            </div>
-        </div>
+    <div class="section-title">✨ explore our world</div>
 
-        <!-- Card: Next Wedding Ann -->
-        <div class="stat-card">
-            <div class="stat-icon">💍</div>
-            <div class="stat-label">next wedding anniversary in</div>
-            <div class="stat-main">@daysToWeddingAnniversary <span class="stat-unit">days</span></div>
-            <div class="stat-sub">23rd June — our wedding day 💍</div>
-        </div>
+    <div class="nav-cards-grid">
 
-        <!-- Card: Next What are we Ann -->
-        <div class="stat-card">
-            <div class="stat-icon">🎉</div>
-            <div class="stat-label">next "what are we" day in</div>
-            <div class="stat-main">@daysToAnniversary <span class="stat-unit">days</span></div>
-            <div class="stat-sub">12th July — our day 💛</div>
-        </div>
+        <a href="/stats" class="nav-card">
+            <div class="nav-card-icon">💛</div>
+            <div class="nav-card-label">Matty x Kelly Stats</div>
+            <div class="nav-card-sub">the numbers of us</div>
+        </a>
 
-        <!-- Card: Days of the week -->
-        <div class="stat-card">
-            <div class="stat-icon">📆</div>
-            <div class="stat-label">we've been together for</div>
-            <div class="stat-main">@togetherWeekdays <span class="stat-unit">@currentDayPlural</span></div>
-            <div class="stat-sub">met on a @metDayOfWeek · became "a couple" on a @togetherDayOfWeek</div>
-        </div>
+        <a href="/timeline" class="nav-card">
+            <div class="nav-card-icon">📅</div>
+            <div class="nav-card-label">Our Timeline</div>
+            <div class="nav-card-sub">every moment, captured</div>
+        </a>
+
+        <a href="/memory-map" class="nav-card">
+            <div class="nav-card-icon">🗺️</div>
+            <div class="nav-card-label">Memory Map</div>
+            <div class="nav-card-sub">places we've been together</div>
+        </a>
+
+        <a href="/daily-messages" class="nav-card">
+            <div class="nav-card-icon">💌</div>
+            <div class="nav-card-label">Daily Messages</div>
+            <div class="nav-card-sub">a little something every day</div>
+        </a>
+
+        <a href="/pets" class="nav-card">
+            <div class="nav-card-icon">🐾</div>
+            <div class="nav-card-label">Our Pets</div>
+            <div class="nav-card-sub">our little family</div>
+        </a>
+
+        <a href="/countdown" class="nav-card">
+            <div class="nav-card-icon">✨</div>
+            <div class="nav-card-label">Countdown</div>
+            <div class="nav-card-sub">something to look forward to</div>
+        </a>
+
+        <a href="/playlist" class="nav-card">
+            <div class="nav-card-icon">🎵</div>
+            <div class="nav-card-label">Our Playlist</div>
+            <div class="nav-card-sub">the soundtrack of us</div>
+        </a>
+
+        <a href="/bucket-list" class="nav-card">
+            <div class="nav-card-icon">🌍</div>
+            <div class="nav-card-label">Bucket List</div>
+            <div class="nav-card-sub">adventures still to come</div>
+        </a>
+
+        <a href="/inside-jokes" class="nav-card">
+            <div class="nav-card-icon">😄</div>
+            <div class="nav-card-label">Inside Jokes</div>
+            <div class="nav-card-sub">only we get it</div>
+        </a>
 
     </div>
+
+    
 
 </div>
 
 @code {
     #region Variables
-    // ── Dates ────────────────────────────────────────
-    private readonly DateTime metDate = new DateTime(2015, 6, 23);
-    private readonly DateTime togetherDate = new DateTime(2015, 7, 12);
-    private readonly DateTime weddingDate = new DateTime(2025, 6, 23);
 
-    // ── State ────────────────────────────────────────
-    private Timer? timer;
-
-    // Met stats
-    private int metSeconds, metMinutes, metHours, metTotalHours;
-    private int metDays, metRemDays, metMonths, metYears;
-    private string metDayOfWeek = string.Empty;
-
-    // Together stats
-    private int togetherSeconds, togetherMinutes, togetherHours, togetherTotalHours;
-    private int togetherDays, togetherRemDays, togetherWeekdays, togetherMonths, togetherYears;
-    private string togetherDayOfWeek = string.Empty;
-
-    // Anniversary
-    private int daysToAnniversary;
-    private int daysToWeddingAnniversary;
-
-    // Current day
     private string currentDay = string.Empty;
     private string currentDayPlural = string.Empty;
-
-    // Rotating message
     private string currentDate = string.Empty;
     private string currentTime = string.Empty;
     private string rotatingMessage = string.Empty;
+
+    private readonly DateTime togetherDate = new DateTime(2015, 7, 12);
+
     private int lastMinute = -1;
+    private int togetherWeekdays;
+
+    private Timer? timer;
+
+    private List<TimelineEntry> onThisDay = new();
+
 
     private readonly string[] messages = new[]
     {
@@ -116,6 +128,14 @@
         "Marnie says love you mommy!",
         "Jiji says hey.",
         "Phoebe says awoowomwomwoo!",
+        "Pretty Face!",
+        "My person.",
+        "Best Woman in the world ever.",
+        "Your beauty is unmatched, my love.",
+        "You are the light of my life.",
+        "My reason for everything.",
+        "Two cheeks of a bum is we.",
+        "Snoop is wondering whether you have any snacks."
     };
     #endregion
 
@@ -133,9 +153,13 @@
     {
         var now = DateTime.Now;
 
-        // ── Rotating Message ──────────────────────────────
+        var togetherSpan = now - togetherDate;
+        togetherWeekdays = (int)(togetherSpan.TotalDays / 7);
+
         currentDate = now.ToString("dddd, dd MMMM yyyy");
         currentTime = now.ToString("hh:mm:ss tt");
+        currentDay = now.DayOfWeek.ToString();
+        currentDayPlural = now.DayOfWeek.ToString() + "s";
 
         if (now.Minute != lastMinute)
         {
@@ -143,62 +167,26 @@
             var rng = new Random();
             rotatingMessage = messages[rng.Next(messages.Length)];
         }
-
-        // ── Met stats ────────────────────────────────
-        var metSpan = now - metDate;
-        metDays = (int)metSpan.TotalDays;
-        GetYearsMonthsDays(metDate, now, out metYears, out metMonths, out metRemDays);
-        metHours = (int)metSpan.TotalHours % 24;
-        metTotalHours = (int)metSpan.TotalHours;
-        metMinutes = (int)metSpan.TotalMinutes % 60;
-        metSeconds = (int)metSpan.TotalSeconds % 60;
-
-        // ── Together stats ───────────────────────────
-        var togetherSpan = now - togetherDate;
-        togetherDays = (int)togetherSpan.TotalDays;
-        togetherHours = (int)togetherSpan.TotalHours % 24;
-        togetherTotalHours = (int)togetherSpan.TotalHours;
-        togetherMinutes = (int)togetherSpan.TotalMinutes % 60;
-        togetherSeconds = (int)togetherSpan.TotalSeconds % 60;
-        GetYearsMonthsDays(togetherDate, now, out togetherYears, out togetherMonths, out togetherRemDays);
-
-        // ── Next anniversary ─────────────────────────
-        var nextAnniversary = new DateTime(now.Year, togetherDate.Month, togetherDate.Day);
-        if (nextAnniversary <= now)
-            nextAnniversary = nextAnniversary.AddYears(1);
-        daysToAnniversary = (int)(nextAnniversary - now).TotalDays;
-
-        // ── Next wedding anniversary ─────────────────────
-        var nextWedding = new DateTime(now.Year, metDate.Month, metDate.Day);
-        if (nextWedding <= now)
-            nextWedding = nextWedding.AddYears(1);
-        daysToWeddingAnniversary = (int)(nextWedding - now).TotalDays;
-
-        // ── Day of week stats ────────────────────────
-        metDayOfWeek = metDate.DayOfWeek.ToString();
-        togetherDayOfWeek = togetherDate.DayOfWeek.ToString();
-        currentDay = now.DayOfWeek.ToString();
-        currentDayPlural = now.DayOfWeek.ToString() + "s";
-        togetherWeekdays = (int)(togetherSpan.TotalDays / 7);
     }
 
-    private void GetYearsMonthsDays(DateTime from, DateTime to, out int years, out int months, out int days)
+    protected override async Task OnInitializedAsync()
     {
-        years = to.Year - from.Year;
-        months = to.Month - from.Month;
-        days = to.Day - from.Day;
-
-        if (days < 0)
-        {
-            months--;
-            days += DateTime.DaysInMonth(to.Year, to.Month == 1 ? 12 : to.Month - 1);
-        }
-        if (months < 0)
-        {
-            years--;
-            months += 12;
-        }
+        var all = await Data.GetTimelineAsync();
+        var today = DateTime.Now;
+        onThisDay = all
+            .Where(e => e.ParsedDate.Day == today.Day && e.ParsedDate.Month == today.Month)
+            .OrderBy(e => e.ParsedDate)
+            .ToList();
     }
 
+    private string yearsAgo(TimelineEntry entry)
+    {
+        var years = DateTime.Now.Year - entry.ParsedDate.Year;
+        return years == 0 ? "this year" : years == 1 ? "1 year" : $"{years} years";
+    }
+
+    #region Disposal
     public void Dispose() => timer?.Dispose();
+    #endregion
+
 }
