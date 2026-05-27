@@ -14,5 +14,8 @@ namespace DCS.MD.Kelly.Web.Services
 
         public async Task<List<MapLocation>> GetMapLocationsAsync()
             => await _http.GetFromJsonAsync<List<MapLocation>>("data/map-locations.json") ?? new();
+
+        public async Task<List<Pet>> GetPetsAsync()
+            => await _http.GetFromJsonAsync<List<Pet>>("data/pets.json") ?? new();
     }
 }

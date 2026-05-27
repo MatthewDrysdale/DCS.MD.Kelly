@@ -1,0 +1,142 @@
+﻿@page "/pets"
+@inject DataService Data
+
+<div class="pets-page">
+
+    <div class="page-header">
+        <h1>Our Pets 🐾</h1>
+        <p>our little family</p>
+    </div>
+
+    @if (pets == null)
+    {
+        <div class="timeline-loading">loading the babies...</div>
+    }
+    else
+    {
+        <div class="pets-grid">
+            @foreach (var pet in pets)
+            {
+                <div class="pet-card-wrapper">
+                    <div class="pet-card @(flipped.Contains(pet.Id) ? "flipped" : "")" @onclick="() => ToggleFlip(pet.Id)">
+
+                        <!-- Front -->
+                        <div class="pet-card-front card">
+                            <div class="pet-card-photo">
+                                <span class="pet-placeholder-emoji">@pet.Emoji</span>
+                            </div>
+                            <div class="pet-card-info">
+                                <div class="pet-name">@pet.Name</div>
+                                <div class="pet-card-info-top">
+                                    <div class="pet-alias">"@pet.Alias"</div>
+                                    <div class="pet-status @(pet.IsAlive ? "alive" : "deceased")">
+                                        @(pet.IsAlive ? "🌿 alive" : "🌈 forever in our hearts")
+                                    </div>
+                                </div>
+                                <div class="pet-defining">✨ @pet.DefiningFeature</div>
+                                <hr class="pet-divider" />
+                                <div class="pet-bio-front">@pet.Bio</div>
+                                <hr class="pet-divider" />
+                                <div class="pet-gotcha">
+                                    🐾 gotcha day: @pet.ParsedGotchaDate.ToString("dd MMM yyyy")
+                                    <span class="pet-gotcha-age">(@pet.GotchaAge ago)</span>
+                                </div>
+                                <div class="pet-flip-hint">tap to see stats 👆</div>
+                            </div>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="pet-card-back card">
+                            <div class="pet-back-name">@pet.Name's Stats</div>
+                            <div class="pet-stats">
+                                <div class="pet-stat-row">
+                                    <span class="pet-stat-label">😴 Laziness</span>
+                                    <div class="pet-stat-bar">
+                                        <div class="pet-stat-fill" style="width: @(pet.Stats.Laziness * 10)%"></div>
+                                    </div>
+                                    <span class="pet-stat-value">@pet.Stats.Laziness</span>
+                                </div>
+                                <div class="pet-stat-row">
+                                    <span class="pet-stat-label">🍕 Greediness</span>
+                                    <div class="pet-stat-bar">
+                                        <div class="pet-stat-fill" style="width: @(pet.Stats.Greediness * 10)%"></div>
+                                    </div>
+                                    <span class="pet-stat-value">@pet.Stats.Greediness</span>
+                                </div>
+                                <div class="pet-stat-row">
+                                    <span class="pet-stat-label">🤗 Cuddliness</span>
+                                    <div class="pet-stat-bar">
+                                        <div class="pet-stat-fill" style="width: @(pet.Stats.Cuddliness * 10)%"></div>
+                                    </div>
+                                    <span class="pet-stat-value">@pet.Stats.Cuddliness</span>
+                                </div>
+                                <div class="pet-stat-row">
+                                    <span class="pet-stat-label">🌀 Chaos Level</span>
+                                    <div class="pet-stat-bar">
+                                        <div class="pet-stat-fill" style="width: @(pet.Stats.ChaosLevel * 10)%"></div>
+                                    </div>
+                                    <span class="pet-stat-value">@pet.Stats.ChaosLevel</span>
+                                </div>
+                                <div class="pet-stat-row">
+                                    <span class="pet-stat-label">🧠 Intelligence</span>
+                                    <div class="pet-stat-bar">
+                                        <div class="pet-stat-fill" style="width: @(pet.Stats.Intelligence * 10)%"></div>
+                                    </div>
+                                    <span class="pet-stat-value">@pet.Stats.Intelligence</span>
+                                </div>
+                                <div class="pet-stat-row">
+                                    <span class="pet-stat-label">😻 Cuteness</span>
+                                    <div class="pet-stat-bar">
+                                        <div class="pet-stat-fill" style="width: @(pet.Stats.Cuteness * 10)%"></div>
+                                    </div>
+                                    <span class="pet-stat-value">@pet.Stats.Cuteness</span>
+                                </div>
+                            </div>
+                            <div class="pet-top-stat">
+                                @GetTopStats(pet.Stats)
+                            </div>
+                            <div class="pet-flip-hint">tap to flip back 👆</div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@code {
+    private List<Pet>? pets;
+    private HashSet<int> flipped = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        pets = await Data.GetPetsAsync();
+    }
+
+    private void ToggleFlip(int id)
+    {
+        if (flipped.Contains(id)) flipped.Remove(id);
+        else flipped.Add(id);
+    }
+
+    private string GetTopStats(PetStats stats)
+    {
+        var all = new Dictionary<string, int>
+        {
+            { "Laziness", stats.Laziness },
+            { "Greediness", stats.Greediness },
+            { "Cuddliness", stats.Cuddliness },
+            { "Chaos Level", stats.ChaosLevel },
+            { "Intelligence", stats.Intelligence },
+            { "Cuteness", stats.Cuteness }
+        };
+
+        var maxValue = all.Max(x => x.Value);
+        var topStats = all.Where(x => x.Value == maxValue).Select(x => x.Key).ToList();
+        var names = string.Join(" & ", topStats);
+
+        return $"⭐ {names} ({maxValue}/10)";
+    }
+}

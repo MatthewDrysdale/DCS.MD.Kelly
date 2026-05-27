@@ -2,6 +2,7 @@
 @inject DataService Data
 @inject AuthService Auth
 @inject NavigationManager Nav
+@inject IJSRuntime JS
 @implements IDisposable
 
 <div class="home-page">
@@ -16,7 +17,6 @@
     @if (onThisDay.Any())
     {
         <div class="section-title">📅 on this day</div>
-
         <div class="on-this-day-grid">
             @foreach (var entry in onThisDay)
             {
@@ -35,65 +35,28 @@
 
     <div class="section-title">✨ explore our world</div>
 
-    <div class="nav-cards-grid">
-
-        <a href="/stats" class="nav-card">
-            <div class="nav-card-icon">💛</div>
-            <div class="nav-card-label">Matty x Kelly Stats</div>
-            <div class="nav-card-sub">the numbers of us</div>
+    <div class="bubbles-container">
+        <a href="/stats" class="bubble">
+            <div class="bubble-icon">💛</div>
+            <div class="bubble-label">Stats</div>
         </a>
-
-        <a href="/timeline" class="nav-card">
-            <div class="nav-card-icon">📅</div>
-            <div class="nav-card-label">Our Timeline</div>
-            <div class="nav-card-sub">every moment, captured</div>
+        <a href="/timeline" class="bubble">
+            <div class="bubble-icon">📅</div>
+            <div class="bubble-label">Timeline</div>
         </a>
-
-        <a href="/memory-map" class="nav-card">
-            <div class="nav-card-icon">🗺️</div>
-            <div class="nav-card-label">Memory Map</div>
-            <div class="nav-card-sub">places we've been together</div>
+        <a href="/memory-map" class="bubble">
+            <div class="bubble-icon">🗺️</div>
+            <div class="bubble-label">Memory Map</div>
         </a>
-
-        <a href="/daily-messages" class="nav-card">
-            <div class="nav-card-icon">💌</div>
-            <div class="nav-card-label">Daily Messages</div>
-            <div class="nav-card-sub">a little something every day</div>
+        <a href="/pets" class="bubble">
+            <div class="bubble-icon">🐾</div>
+            <div class="bubble-label">Pets</div>
         </a>
-
-        <a href="/pets" class="nav-card">
-            <div class="nav-card-icon">🐾</div>
-            <div class="nav-card-label">Our Pets</div>
-            <div class="nav-card-sub">our little family</div>
+        <a href="/playlist" class="bubble">
+            <div class="bubble-icon">🎵</div>
+            <div class="bubble-label">Playlist</div>
         </a>
-
-        <a href="/countdown" class="nav-card">
-            <div class="nav-card-icon">✨</div>
-            <div class="nav-card-label">Countdown</div>
-            <div class="nav-card-sub">something to look forward to</div>
-        </a>
-
-        <a href="/playlist" class="nav-card">
-            <div class="nav-card-icon">🎵</div>
-            <div class="nav-card-label">Our Playlist</div>
-            <div class="nav-card-sub">the soundtrack of us</div>
-        </a>
-
-        <a href="/bucket-list" class="nav-card">
-            <div class="nav-card-icon">🌍</div>
-            <div class="nav-card-label">Bucket List</div>
-            <div class="nav-card-sub">adventures still to come</div>
-        </a>
-
-        <a href="/inside-jokes" class="nav-card">
-            <div class="nav-card-icon">😄</div>
-            <div class="nav-card-label">Inside Jokes</div>
-            <div class="nav-card-sub">only we get it</div>
-        </a>
-
     </div>
-
-    
 
 </div>
 
@@ -112,9 +75,7 @@
     private int togetherWeekdays;
 
     private Timer? timer;
-
     private List<TimelineEntry> onThisDay = new();
-
 
     private readonly string[] messages = new[]
     {
@@ -137,6 +98,7 @@
         "Two cheeks of a bum is we.",
         "Snoop is wondering whether you have any snacks."
     };
+
     #endregion
 
     protected override void OnInitialized()
@@ -152,10 +114,8 @@
     private void Recalculate()
     {
         var now = DateTime.Now;
-
         var togetherSpan = now - togetherDate;
         togetherWeekdays = (int)(togetherSpan.TotalDays / 7);
-
         currentDate = now.ToString("dddd, dd MMMM yyyy");
         currentTime = now.ToString("hh:mm:ss tt");
         currentDay = now.DayOfWeek.ToString();
@@ -179,6 +139,14 @@
             .ToList();
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("bubblesInterop.init");
+        }
+    }
+
     private string yearsAgo(TimelineEntry entry)
     {
         var years = DateTime.Now.Year - entry.ParsedDate.Year;
@@ -186,7 +154,11 @@
     }
 
     #region Disposal
-    public void Dispose() => timer?.Dispose();
+    public void Dispose()
+    {
+        timer?.Dispose();
+        JS.InvokeVoidAsync("bubblesInterop.destroy");
+    }
     #endregion
 
 }
