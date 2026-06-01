@@ -17,5 +17,8 @@ namespace DCS.MD.Kelly.Web.Services
 
         public async Task<List<Pet>> GetPetsAsync()
             => await _http.GetFromJsonAsync<List<Pet>>("data/pets.json") ?? new();
+
+        public async Task<List<Reason>> GetReasonsAsync()
+            => await _http.GetFromJsonAsync<List<Reason>>("data/reasons.json") ?? new();
     }
 }

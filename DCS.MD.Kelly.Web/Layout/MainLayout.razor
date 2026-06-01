@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject AuthService Auth
 @inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <AuthorizedView>
     <div class="app-layout">
@@ -9,6 +10,7 @@
                 <div class="topbar-brand">
                     <span class="app-title">💛 Our Little World</span>
                 </div>
+                <div class="season-indicator">@seasonEmoji</div>
                 <a href="/" class="home-btn">🏠</a>
             </div>
         </header>
@@ -19,7 +21,22 @@
 </AuthorizedView>
 
 @code {
-    private bool navOpen = false;
-    private void ToggleNav() => navOpen = !navOpen;
-    private void CloseNav() => navOpen = false;
+    private string seasonEmoji = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var season = await JS.InvokeAsync<string>("themeInterop.applyTheme");
+            seasonEmoji = season switch
+            {
+                "spring" => "🌸",
+                "summer" => "☀️",
+                "autumn" => "🍂",
+                "winter" => "🌙",
+                _ => ""
+            };
+            StateHasChanged();
+        }
+    }
 }
