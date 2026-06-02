@@ -1311,3 +1311,105 @@ code {
     color: #c02d76;
 }
 /*#endregion*/
+
+/*#region Reasons Page*/
+.reasons-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Featured */
+.reasons-featured {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.reasons-featured-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reasons-featured-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-family: var(--font-ui);
+}
+
+.reasons-featured-count {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--font-mono, var(--font-ui));
+}
+
+.reasons-featured-text {
+    font-size: 1.3rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    font-style: italic;
+    line-height: 1.7;
+    text-align: center;
+    padding: 0.5rem 1rem;
+}
+
+.reasons-random-btn {
+    align-self: center;
+}
+
+/* Grid */
+.reasons-grid {
+    columns: 3;
+    gap: 1rem;
+}
+
+.reason-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color var(--transition), transform var(--transition);
+}
+
+    .reason-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--primary);
+    }
+
+    .reason-card.reason-highlighted {
+        border-color: var(--primary);
+        background: linear-gradient(135deg, var(--surface) 60%, var(--surface-alt));
+    }
+
+.reason-num {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.reason-text {
+    font-size: 0.88rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+    .reasons-grid {
+        columns: 2;
+    }
+}
+
+@media (max-width: 450px) {
+    .reasons-grid {
+        columns: 1;
+    }
+}
+/*#endregion*/

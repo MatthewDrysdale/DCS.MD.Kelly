@@ -1,0 +1,70 @@
+﻿@page "/reasons"
+@inject DataService Data
+
+<div class="reasons-page">
+
+    <div class="page-header">
+        <h1>Why I Love You 💛</h1>
+        <p>let me count the ways</p>
+    </div>
+
+    @if (reasons == null)
+    {
+        <div class="timeline-loading">loading the love...</div>
+    }
+    else
+    {
+        <!-- Today's Reason -->
+        <div class="reasons-featured card">
+            <div class="reasons-featured-top">
+                <div class="reasons-featured-label">✨ today's reason</div>
+                <div class="reasons-featured-count">@todaysReason.Id of @reasons.Count</div>
+            </div>
+            <div class="reasons-featured-text">@todaysReason.Text</div>
+            <button class="btn btn-ghost reasons-random-btn" @onclick="PickRandom">
+                🎲 give me a random one
+            </button>
+        </div>
+
+        <!-- All Reasons -->
+        <div class="section-title">💛 all @reasons.Count reasons</div>
+
+        <div class="reasons-grid">
+            @foreach (var reason in reasons)
+            {
+                <div class="reason-card card @(reason.Id == highlighted ? "reason-highlighted" : "")">
+                    <div class="reason-num">@reason.Id.ToString("D3")</div>
+                    <div class="reason-text">@reason.Text</div>
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@code {
+    private List<Reason>? reasons;
+    private Reason todaysReason = new();
+    private int highlighted = -1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        reasons = await Data.GetReasonsAsync();
+
+        if (reasons.Any())
+        {
+            var dayOfYear = DateTime.Now.DayOfYear;
+            todaysReason = reasons[dayOfYear % reasons.Count];
+            highlighted = todaysReason.Id;
+        }
+    }
+
+    private void PickRandom()
+    {
+        if (reasons == null || !reasons.Any()) return;
+        var rng = new Random();
+        var pick = reasons[rng.Next(reasons.Count)];
+        todaysReason = pick;
+        highlighted = pick.Id;
+    }
+}

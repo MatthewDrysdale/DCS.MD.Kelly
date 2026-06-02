@@ -3,6 +3,6 @@
     public class Reason
     {
         public int Id { get; set; }
-        public string ReasonText { get; set; } = "";
+        public string Text { get; set; } = "";
     }
 }
