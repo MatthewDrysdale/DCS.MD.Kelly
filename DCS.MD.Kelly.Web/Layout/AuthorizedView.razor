@@ -1,0 +1,28 @@
+﻿@inject AuthService Auth
+@inject NavigationManager Nav
+
+@if (initialised && Auth.IsAuthenticated)
+{
+    @ChildContent
+}
+else
+{
+    <div class="init-loader"></div>
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private bool initialised = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Auth.InitialiseAsync();
+        initialised = true;
+
+        if (!Auth.IsAuthenticated)
+        {
+            Nav.NavigateTo("/login", forceLoad: false);
+        }
+    }
+}

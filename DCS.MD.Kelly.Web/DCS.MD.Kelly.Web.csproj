@@ -16,10 +16,4 @@
     <Folder Include="Components\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="DCS.MD.Logging">
-      <HintPath>..\..\DCS.MD.Logging\bin\Release\net8.0\DCS.MD.Logging.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
