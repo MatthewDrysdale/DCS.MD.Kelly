@@ -1,36 +1,36 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches:
       - main
-
 permissions:
   contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
-
       - name: Restore
         run: dotnet restore
-
       - name: Publish
         run: dotnet publish DCS.MD.Kelly.Web/DCS.MD.Kelly.Web.csproj -c Release -o publish
-
+      - name: Debug - List publish folder
+        run: |
+          echo "=== publish folder ==="
+          ls publish/
+          echo "=== wwwroot folder ==="
+          ls publish/wwwroot/
+          echo "=== index.html contents ==="
+          cat publish/wwwroot/index.html
       - name: Fix base path
         run: |
           cp publish/wwwroot/index.html publish/wwwroot/404.html
           sed -i 's|<base href="/" />|<base href="/DCS.MD.Kelly/" />|g' publish/wwwroot/index.html
           sed -i 's|<base href="/" />|<base href="/DCS.MD.Kelly/" />|g' publish/wwwroot/404.html
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
