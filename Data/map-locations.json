@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Dublin",
+    "country": "Ireland",
+    "latitude": 53.31538051151845,
+    "longitude": -6.419638731799202,
+    "description": "Home is where the Kelly is.",
+    "date": "2024-11-11",
+    "emoji": "🏠"
+  },
+
+  {
+    "id": 2,
+    "name": "Cork",
+    "country": "Ireland",
+    "latitude": 51.89630354163425,
+    "longitude": -8.473215876370555,
+    "description": "Cannae understand a word boi x 2",
+    "date": "2024-11-11"
+  },
+
+  {
+    "id": 3,
+    "name": "Galway",
+    "country": "Ireland",
+    "latitude": 53.27499777999089,
+    "longitude": -9.048232657420767,
+    "description": "Galway Girl 💀",
+    "date": "2024-11-11"
+  },
+
+  {
+    "id": 4,
+    "name": "Belfast",
+    "country": "Ireland",
+    "latitude": 54.5977368393168,
+    "longitude": -5.9313414089867065,
+    "description": "Oh Aye",
+    "date": "2021-10-10"
+  },
+
+  {
+    "id": 5,
+    "name": "Waterford",
+    "country": "Ireland",
+    "latitude": 52.25813779081988,
+    "longitude": -7.106576780972981,
+    "description": "Still thinking about your man",
+    "date": "2024-11-11"
+  },
+
+  {
+    "id": 6,
+    "name": "Derry",
+    "country": "Ireland",
+    "latitude": 52.25813779081988,
+    "longitude": -7.106576780972981,
+    "description": "Yup the Palestinian Cafe Bestie",
+    "date": "2026-06-23"
+  },
+
+  {
+    "id": 7,
+    "name": "London",
+    "country": "England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "description": "MARGARET THATCHER IS DEAD",
+    "date": "2023-07-10"
+  },
+
+  {
+    "id": 8,
+    "name": "Edinburgh",
+    "country": "Ireland",
+    "latitude": 55.95120539083446,
+    "longitude": -3.1747830249712394,
+    "description": "Bless up the Witchery",
+    "date": "2024-07-10"
+  },
+
+  {
+    "id": 9,
+    "name": "Rome",
+    "country": "Italy",
+    "latitude": 41.9028,
+    "longitude": 12.4964,
+    "description": "When in Rome...",
+    "date": "2017-01-01"
+  },
+
+  {
+    "id": 10,
+    "name": "Verona",
+    "country": "Italy",
+    "latitude": 45.43874243757243,
+    "longitude": 10.98786112691821,
+    "description": "Where art thou Romeo",
+    "date": "2024-10-07"
+  },
+
+  {
+    "id": 11,
+    "name": "Venice",
+    "country": "Italy",
+    "latitude": 45.46170490786854,
+    "longitude": 12.431958928111921,
+    "description": "When the moon hits your eye...",
+    "date": "2024-10-10"
+  },
+
+  {
+    "id": 12,
+    "name": "Florence",
+    "country": "Italy",
+    "latitude": 43.76981880775851,
+    "longitude": 11.258397163267752,
+    "description": "Home of David's tight ass",
+    "date": "2024-10-12"
+  },
+
+  {
+    "id": 13,
+    "name": "Pisa",
+    "country": "Italy",
+    "latitude": 43.72168820975347,
+    "longitude": 10.461343892621633,
+    "description": "Wet feet pal",
+    "date": "2024-10-17"
+  },
+
+  {
+    "id": 14,
+    "name": "Paris",
+    "country": "France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "description": "Ooh la la x 2",
+    "date": "2018-01-01"
+  },
+
+  {
+    "id": 15,
+    "name": "Barcelona",
+    "country": "Spain",
+    "latitude": 41.388068317579794,
+    "longitude": 2.172972203312713,
+    "description": "In before the water guns pal yuppa",
+    "date": "2018-01-01"
+  },
+
+  {
+    "id": 16,
+    "name": "Stockholm",
+    "country": "Sweden",
+    "latitude": 59.335351892432534,
+    "longitude": 18.079714959611923,
+    "description": "MAX",
+    "date": "2026-05-13"
+  }
+]

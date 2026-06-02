@@ -1,0 +1,153 @@
+[
+  {
+    "id": 1,
+    "name": "Jiji",
+    "alias": "The Juice",
+    "bio": "Momma's dream of a black cat. Our third choice, but he doesn't need to know that. Only a little Autistic, like his mommy and daddy.",
+    "definingFeature": "Love heart belly patch.",
+    "status": "Alive",
+    "gotchaDate": "2024-11-30",
+    "emoji": "🐱",
+    "stats": {
+      "laziness": 10,
+      "greediness": 8,
+      "cuddliness": 5,
+      "chaosLevel": 1,
+      "intelligence": 1,
+      "cuteness": 8
+    }
+  },
+
+  {
+    "id": 2,
+    "name": "Marnie",
+    "alias": "Barnie",
+    "bio": "Most beautiful little tortie angel. Stunningness incarnate. Voice of an angel. Ra-ow.",
+    "definingFeature": "Fur pattern never seen in the world ever.",
+    "status": "Alive",
+    "gotchaDate": "2025-08-01",
+    "emoji": "🐈",
+    "stats": {
+      "laziness": 5,
+      "greediness": 10,
+      "cuddliness": 9,
+      "chaosLevel": 8,
+      "intelligence": 8,
+      "cuteness": 10
+    }
+  },
+
+  {
+    "id": 3,
+    "name": "Phoebe",
+    "alias": "The Smoochy Poochy",
+    "bio": "Momma's favourite pooch, although her loyalty is questionable at best.",
+    "definingFeature": "Most beautiful grey eyebrows.",
+    "gotchaDate": "2017-03-04",
+    "emoji": " ",
+    "stats": {
+      "laziness": 8,
+      "greediness": 2,
+      "cuddliness": 7,
+      "chaosLevel": 1,
+      "intelligence": 10,
+      "cuteness": 8
+    }
+  },
+
+  {
+    "id": 4,
+    "name": "Snoop",
+    "alias": "Snoopy Poop",
+    "bio": "Henlo am Snoop am love bush burger. Pls ignor my rection am nervous.",
+    "definingFeature": "Ear whisps.",
+    "status": "Alive",
+    "gotchaDate": "2019-03-16",
+    "emoji": " ",
+    "stats": {
+      "laziness": 4,
+      "greediness": 10,
+      "cuddliness": 9,
+      "chaosLevel": 7,
+      "intelligence": 2,
+      "cuteness": 9
+    }
+  },
+
+  {
+    "id": 5,
+    "name": "Hugo",
+    "alias": "Huge Nuts",
+    "bio": "CAUTION! Will lick to death.",
+    "definingFeature": "Fattest head you've ever seen.",
+    "status": "Alive",
+    "gotchaDate": "2022-04-19",
+    "emoji": " ",
+    "stats": {
+      "laziness": 2,
+      "greediness": 9,
+      "cuddliness": 9,
+      "chaosLevel": 10,
+      "intelligence": 4,
+      "cuteness": 9
+    }
+  },
+
+  {
+    "id": 6,
+    "name": "Fifi",
+    "alias": "Fee Fye Fo Fum",
+    "bio": "Unrivaled level of stink. Truely Legendary.",
+    "definingFeature": "mmm fifi's got one eye",
+    "status": "Dead",
+    "gotchaDate": "2010-12-01",
+    "emoji": " ",
+    "stats": {
+      "laziness": 10,
+      "greediness": 9,
+      "cuddliness": 1,
+      "chaosLevel": 1,
+      "intelligence": 1,
+      "cuteness": 10
+    }
+  },
+
+  {
+    "id": 7,
+    "name": "Hollie",
+    "alias": "The Cretin",
+    "bio": "Only a little bit brain damaged. Sweet slippery weirdo.",
+    "definingFeature": "Even the stripe down her snout was a little wonky.",
+    "status": "Dead",
+    "gotchaDate": "2015-01-01",
+    "emoji": " ",
+    "stats": {
+      "laziness": 10,
+      "greediness": 1,
+      "cuddliness": 6,
+      "chaosLevel": 1,
+      "intelligence": 1,
+      "cuteness": 10
+    }
+  },
+
+  {
+    "id": 8,
+    "name": "Anja",
+    "alias": "The Tank",
+    "bio": "Fluffy and tubby. Fluffy Tubs if you will. She lived for one thing and one thing only. Philip.",
+    "definingFeature": "Eyeliner of an Egyptian Pharoah.",
+    "status": "Dead",
+    "gotchaDate": "2010-01-01",
+    "emoji": " ",
+    "stats": {
+      "laziness": 10,
+      "greediness": 5,
+      "cuddliness": 1,
+      "chaosLevel": 1,
+      "intelligence": 5,
+      "cuteness": 5
+    }
+  }
+
+]

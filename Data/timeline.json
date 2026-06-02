@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "date": "2015-06-23",
+    "title": "The Day We Met",
+    "description": "Some questions were raised about the mental stability of Hollie.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 2,
+    "date": "2015-07-12",
+    "title": "What Are We Day",
+    "description": "So like....what are we???",
+    "category": "milestone"
+  },
+
+  {
+    "id": 3,
+    "date": "2018-02-28",
+    "title": "Our first big snow together",
+    "description": "Face plants on the garden table, Sammy the snowman, popadoms in the night, walkies with the doggies, and Frozen and hot chocolate with Mumsy.",
+    "category": "memories"
+  },
+
+  {
+    "id": 4,
+    "date": "1998-06-15",
+    "title": "Kelly Birthday!",
+    "description": "The day that this grim place called earth was graced with the magnificance of your being, thus making it liveable, my love.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 5,
+    "date": "1998-10-11",
+    "title": "Matty Birthday",
+    "description": "Wow Matty's birthday! Give him a kiss momma.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 6,
+    "date": "2024-11-11",
+    "title": "The keys to our first place together!",
+    "description": "Not the most amazing place, but we make the most of it, as long as we are together.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 7,
+    "date": "2024-11-30",
+    "title": "Jiji gotcha day!",
+    "description": "Sure he wasn't our first choice but he's our autistic bin cat and we woudn't change him for the world.'",
+    "category": "milestone"
+  },
+
+  {
+    "id": 8,
+    "date": "2025-08-01",
+    "title": "Marnie gotcha day!",
+    "description": "Love at first sight. Momma's soul cat forever and always.'",
+    "category": "milestone"
+  },
+
+  {
+    "id": 9,
+    "date": "2024-07-10",
+    "title": "Witch Museum in Edinburgh!",
+    "description": "Love my pagan wife.",
+    "category": "memories"
+  },
+
+  {
+    "id": 10,
+    "date": "2024-05-01",
+    "title": "Olivia Rodrigo Again!!",
+    "description": "3 Arena",
+    "category": "memories"
+  },
+
+  {
+    "id": 11,
+    "date": "2024-06-01",
+    "title": "Bloom!",
+    "description": "Phoenix Park",
+    "category": "memories"
+  },
+
+  {
+    "id": 12,
+    "date": "2024-06-15",
+    "title": "Tara Hill Adventure",
+    "description": "Gorey",
+    "category": "memories"
+  },
+
+  {
+    "id": 13,
+    "date": "2024-06-30",
+    "title": "Eras Tour!!!",
+    "description": "Saw mom and step mom on the same day wow!",
+    "category": "memories"
+  },
+
+  {
+    "id": 14,
+    "date": "2024-10-08",
+    "title": "Verona",
+    "description": "Breakfast croissant in front of the arena.",
+    "category": "memories"
+  },
+
+  {
+    "id": 15,
+    "date": "2024-10-10",
+    "title": "Venice",
+    "description": "Check in to our fancy la de da hotel!",
+    "category": "memories"
+  },
+
+  {
+    "id": 16,
+    "date": "2024-10-15",
+    "title": "Florence",
+    "description": "Petted a pretty cat in Boboli Gardens.",
+    "category": "memories"
+  },
+
+  {
+    "id": 17,
+    "date": "2024-10-18",
+    "title": "Pisa",
+    "description": "Cursed black sandwich in Pisa.",
+    "category": "memories"
+  },
+
+  {
+    "id": 18,
+    "date": "2023-07-14",
+    "title": "London",
+    "description": "Visited THE restaurant in London.",
+    "category": "memories"
+  },
+
+  {
+    "id": 19,
+    "date": "2021-09-06",
+    "title": "Caught a frog",
+    "description": "She was cute.",
+    "category": "memories"
+  },
+
+  {
+    "id": 20,
+    "date": "2017-03-04",
+    "title": "Phoebe Gotcha Day!",
+    "description": "Arrived with no eyebrows installed unfortunately.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 21,
+    "date": "2022-04-19",
+    "title": "Hugo Gotcha Day!",
+    "description": "He was so tiny!",
+    "category": "milestone"
+  },
+
+  {
+    "id": 22,
+    "date": "2019-03-16",
+    "title": "Henry Gotcha Day!",
+    "description": "Eat your heart out Snoop.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 23,
+    "date": "2010-12-01",
+    "title": "Fifi Gotcha Day!",
+    "description": "Early records don't indicate an exact date but experts estimate sometime in December.",
+    "category": "milestone"
+  },
+
+  {
+    "id": 24,
+    "date": "2018-07-01",
+    "title": "Anja Death Day!",
+    "description": "Went out with a bang of diarrhea in the car.",
+    "category": "memories"
+  },
+
+  {
+    "id": 25,
+    "date": "2022-02-28",
+    "title": "Holly Death Day!",
+    "description": "Miss our little cretin.",
+    "category": "memories"
+  },
+
+  {
+    "id": 26,
+    "date": "2022-11-15",
+    "title": "Fifi Death Day!",
+    "description": "RIP little stinker.",
+    "category": "memories"
+  }
+
+]
