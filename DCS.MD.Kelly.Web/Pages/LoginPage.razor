@@ -39,7 +39,7 @@
         var success = await Auth.LoginAsync(password);
         if (success)
         {
-            Nav.NavigateTo("/");
+            Nav.NavigateTo(Nav.BaseUri);
         }
         else
         {
