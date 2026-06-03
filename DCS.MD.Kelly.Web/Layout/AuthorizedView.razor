@@ -1,7 +1,11 @@
 ﻿@inject AuthService Auth
 @inject NavigationManager Nav
 
-@if (initialised && Auth.IsAuthenticated)
+@if (!initialised)
+{
+    <div class="init-loader"></div>
+}
+else if (Auth.IsAuthenticated)
 {
     @ChildContent
 }
