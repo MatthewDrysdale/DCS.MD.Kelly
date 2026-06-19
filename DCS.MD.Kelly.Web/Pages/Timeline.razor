@@ -5,12 +5,12 @@
 
     <div class="page-header">
         <h1>Our Timeline 📅</h1>
-        <p>every chapter of our story</p>
+        <p>mems and milestones of us so far...</p>
     </div>
 
     @if (entries == null)
     {
-        <div class="timeline-loading">loading your story...</div>
+        <div class="timeline-loading">loading mems...</div>
     }
     else
     {
@@ -23,9 +23,19 @@
                 <div class="timeline-item @(isLeft ? "left" : "right")">
                     <div class="timeline-card card">
                         <div class="timeline-card-header">
-                            <span class="timeline-emoji">@entry.Emoji</span>
                             <span class="timeline-category @entry.Category">@entry.Category</span>
                         </div>
+                        @if (!string.IsNullOrEmpty(entry.Video))
+                        {
+                            <video class="timeline-media" controls preload="metadata">
+                                <source src="@entry.Video" type="video/mp4" />
+                            </video>
+                        }
+                        else if (!string.IsNullOrEmpty(entry.Image))
+                        {
+                            <img src="@entry.Image" alt="@entry.Title" class="timeline-media timeline-image-clickable"
+                                 @onclick="() => OpenLightbox(entry.Image)" />
+                        }
                         <div class="timeline-date">@entry.ParsedDate.ToString("dd MMMM yyyy")</div>
                         <h3 class="timeline-title">@entry.Title</h3>
                         <p class="timeline-description">@entry.Description</p>
@@ -36,14 +46,33 @@
         </div>
     }
 
+    @if (lightboxImage != null)
+    {
+        <div class="lightbox" @onclick="CloseLightbox">
+            <img src="@lightboxImage" class="lightbox-img" />
+            <button class="lightbox-close" @onclick="CloseLightbox">✕</button>
+        </div>
+    }
+
 </div>
 
 @code {
     private List<TimelineEntry>? entries;
+    private string? lightboxImage;
 
     protected override async Task OnInitializedAsync()
     {
         var all = await Data.GetTimelineAsync();
         entries = all.OrderBy(e => e.ParsedDate).ToList();
+    }
+
+    private void OpenLightbox(string? image)
+    {
+        lightboxImage = image;
+    }
+
+    private void CloseLightbox()
+    {
+        lightboxImage = null;
     }
 }
