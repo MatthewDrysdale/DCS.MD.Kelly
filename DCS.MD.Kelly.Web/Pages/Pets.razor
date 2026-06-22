@@ -23,7 +23,16 @@
                         <!-- Front -->
                         <div class="pet-card-front card">
                             <div class="pet-card-photo">
-                                <span class="pet-placeholder-emoji">@pet.Emoji</span>
+                                @if (!string.IsNullOrEmpty(pet.Photo))
+                                {
+                                    <img src="@pet.Photo" alt="@pet.Name" class="pet-photo-img"
+                                         @onclick:stopPropagation="true"
+                                         @onclick="() => OpenLightbox(pet.Photo)" />
+                                }
+                                else
+                                {
+                                    <span class="pet-placeholder-emoji">@pet.Emoji</span>
+                                }
                             </div>
                             <div class="pet-card-info">
                                 <div class="pet-name">@pet.Name</div>
@@ -104,6 +113,14 @@
         </div>
     }
 
+    @if (lightboxImage != null)
+    {
+        <div class="lightbox" @onclick="CloseLightbox">
+            <img src="@lightboxImage" class="lightbox-img" />
+            <button class="lightbox-close" @onclick="CloseLightbox">✕</button>
+        </div>
+    }
+
 </div>
 
 @code {
@@ -138,5 +155,17 @@
         var names = string.Join(" & ", topStats);
 
         return $"⭐ {names} ({maxValue}/10)";
+    }
+
+    private string? lightboxImage;
+
+    private void OpenLightbox(string? image)
+    {
+        lightboxImage = image;
+    }
+
+    private void CloseLightbox()
+    {
+        lightboxImage = null;
     }
 }

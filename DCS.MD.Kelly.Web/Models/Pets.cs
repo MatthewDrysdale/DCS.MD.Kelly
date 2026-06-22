@@ -20,6 +20,7 @@
         public string Status { get; set; } = "alive";
         public string GotchaDate { get; set; } = "";
         public string Emoji { get; set; } = "🐾";
+        public string Photo { get; set; }
         public PetStats Stats { get; set; } = new();
 
         public bool IsAlive => Status.ToLower() == "alive";
