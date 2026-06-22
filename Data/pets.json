@@ -7,7 +7,7 @@
     "definingFeature": "Love heart belly patch.",
     "status": "Alive",
     "gotchaDate": "2024-11-30",
-    "photo": "images/pets/jiji.jpeg",
+    "photo": "images/pets/jiji.JPEG",
     "stats": {
       "laziness": 10,
       "greediness": 8,
@@ -26,7 +26,7 @@
     "definingFeature": "Fur pattern never seen in the world ever.",
     "status": "Alive",
     "gotchaDate": "2025-08-01",
-    "photo": "images/pets/marnie.jpeg",
+    "photo": "images/pets/marnie.JPEG",
     "stats": {
       "laziness": 5,
       "greediness": 10,
@@ -44,7 +44,7 @@
     "bio": "Momma's favourite pooch, although her loyalty is questionable at best.",
     "definingFeature": "Most beautiful grey eyebrows.",
     "gotchaDate": "2017-03-04",
-    "photo": "images/pets/phoebe.jpeg",
+    "photo": "images/pets/phoebe.JPEG",
     "stats": {
       "laziness": 8,
       "greediness": 2,
@@ -63,7 +63,7 @@
     "definingFeature": "Ear whisps.",
     "status": "Alive",
     "gotchaDate": "2019-03-16",
-    "photo": "images/pets/snoop.jpeg",
+    "photo": "images/pets/snoop.JPEG",
     "stats": {
       "laziness": 4,
       "greediness": 10,
@@ -82,7 +82,7 @@
     "definingFeature": "Fattest head you've ever seen.",
     "status": "Alive",
     "gotchaDate": "2022-04-19",
-    "photo": "images/pets/hugo.jpeg",
+    "photo": "images/pets/hugo.JPEG",
     "stats": {
       "laziness": 2,
       "greediness": 9,
@@ -101,7 +101,7 @@
     "definingFeature": "mmm fifi's got one eye",
     "status": "Dead",
     "gotchaDate": "2010-12-01",
-    "photo": "images/pets/fifi.jpeg",
+    "photo": "images/pets/fifi.JPEG",
     "stats": {
       "laziness": 10,
       "greediness": 9,
@@ -120,7 +120,7 @@
     "definingFeature": "Even the stripe down her snout was a little wonky.",
     "status": "Dead",
     "gotchaDate": "2015-01-01",
-    "photo": "images/pets/hollie.jpeg",
+    "photo": "images/pets/hollie.JPEG",
     "stats": {
       "laziness": 10,
       "greediness": 1,
@@ -139,7 +139,7 @@
     "definingFeature": "Eyeliner of an Egyptian Pharoah.",
     "status": "Dead",
     "gotchaDate": "2010-01-01",
-    "photo": "images/pets/anja.jpeg",
+    "photo": "images/pets/anja.JPEG",
     "stats": {
       "laziness": 10,
       "greediness": 5,
